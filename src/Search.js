@@ -8,7 +8,7 @@ function Search() {
     function posterImage(e) {
         e.preventDefault();
 
-        axios.get('http://www.omdbapi.com/?apikey=f9ab0f40&t=' + poster)
+        axios.get('https://www.omdbapi.com/?apikey=f9ab0f40&t=' + poster)
             .then(response => {
                 document.getElementById("myImg").src = response.data.Poster;
                 document.getElementById('myTitle').innerText = response.data.Title;
