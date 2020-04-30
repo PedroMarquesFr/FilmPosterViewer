@@ -10,8 +10,14 @@ function Search() {
 
         axios.get('https://www.omdbapi.com/?apikey=f9ab0f40&t=' + poster)
             .then(response => {
-                document.getElementById("myImg").src = response.data.Poster;
-                document.getElementById('myTitle').innerText = response.data.Title;
+                if(response.data.Poster === undefined){
+                    document.getElementById('myTitle').innerText = 'Movie Poster Not Found';
+                }else{
+                    document.getElementById("myImg").src = '';                    
+                    document.getElementById('myTitle').innerText = response.data.Title;
+                    response.data.Poster ==='N/A'? document.getElementById("myImg").alt = 'Poster Not Available' : document.getElementById("myImg").src = response.data.Poster;
+                    console.log(response.data.Poster);
+                }
             })
             .catch(error => {
                 console.log(error);
